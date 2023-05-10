@@ -24,31 +24,21 @@ DECODER_HASH = {
   '.--' => 'W',
   '-..-' => 'X',
   '-.--' => 'Y',
-  '--..' => 'Z',
-  '.----' => '1',
-  '..---' => '2',
-  '...--' => '3',
-  '....-' => '4',
-  '.....' => '5',
-  '-....' => '6',
-  '--...' => '7',
-  '---..' => '8',
-  '----.' => '9',
-  '-----' => '0',
-}
+  '--..' => 'Z'
+}.freeze
 
 def decode(str)
-  words = str.split("   ")
+  words = str.split('   ')
   decoded = ''
-  words.each { |word|
+  words.each do |word|
     decoded_word = ''
-    word.split(" ").each { |char|
+    word.split.each do |char|
       decoded_word += DECODER_HASH[char]
-    }
+    end
     decoded += " #{decoded_word}"
-  }
+  end
 
-  return decoded
+  decoded.strip
 end
 
-print decode(".-   -... --- -..-   ..-. ..- .-.. .-..   --- ..-.   .-. ..- -... .. . ...")
+print decode('.-   -... --- -..-   ..-. ..- .-.. .-..   --- ..-.   .-. ..- -... .. . ...')
