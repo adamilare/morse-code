@@ -42,7 +42,7 @@ def decode(str)
   decoded = ''
   words.each { |word|
     decoded_word = ''
-    word.split(' ').each { |char|
+    word.split(" ").each { |char|
       decoded_word += DECODER_HASH[char]
     }
     decoded += " #{decoded_word}"
