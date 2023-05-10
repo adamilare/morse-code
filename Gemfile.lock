@@ -31,3 +31,5 @@ DEPENDENCIES
 
 BUNDLED WITH
    2.2.15
+
+gem 'rubocop', '>= 1.0', '< 2.0'
