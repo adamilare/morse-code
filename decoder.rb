@@ -37,18 +37,23 @@ DECODER_HASH = {
   '-----' => '0'
 }.freeze
 
-def decode(str)
-  words = str.split('   ')
-  decoded = ''
-  words.each do |word|
-    decoded_word = ''
-    word.split.each do |char|
-      decoded_word += DECODER_HASH[char]
-    end
-    decoded += " #{decoded_word}"
-  end
-
-  decoded.strip
+def decode_char(char)
+  DECODER_HASH[char]
 end
 
-print decode('.-   -... --- -..-   ..-. ..- .-.. .-..   --- ..-.   .-. ..- -... .. . ...')
+def decode_word(word)
+  word.split.map { |char| decode_char(char) }.join
+end
+
+def decode(message)
+  message.split('   ').map { |word| decode_word(word) }.join(' ')
+end
+
+# This will print "A"
+print decode('.-')
+
+# This Will Print "MY"
+print decode('-- -.--')
+
+# This will print "MY NAME"
+print decode('-- -.--   -. .- -- .')
